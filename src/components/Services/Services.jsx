@@ -1,4 +1,6 @@
 import React from "react";
+import { PhotoProvider, PhotoView } from "react-photo-view";
+import "react-photo-view/dist/react-photo-view.css";
 import { useLoaderData } from "react-router-dom";
 
 const Services = () => {
@@ -28,7 +30,11 @@ const Services = () => {
               key={service_id}
               className="p-5 rounded-md  mx-auto bg-slate-50"
             >
-              <img src={service_img} className="w-full rounded-md" alt="" />
+              <PhotoProvider>
+                <PhotoView src={service_img}>
+                  <img src={service_img} alt="" />
+                </PhotoView>
+              </PhotoProvider>
               <div className="mt-5 flex flex-col gap-5">
                 <p className="text-xl font-medium">{service_title}</p>
                 <div className="flex items-center justify-between">
