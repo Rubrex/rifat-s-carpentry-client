@@ -1,7 +1,7 @@
 import React from "react";
 import { PhotoProvider, PhotoView } from "react-photo-view";
 import "react-photo-view/dist/react-photo-view.css";
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 
 const Services = () => {
   const myservices = useLoaderData();
@@ -42,9 +42,12 @@ const Services = () => {
                   <span>Rating: {service_rating}</span>
                 </div>
                 <p>{shortenDescription(service_description)}</p>
-                <button className="border border-woodLight py-2 px-4 text-woodLight hover:bg-woodDark hover:text-white rounded-md">
+                <Link
+                  to={`/services/${service_id}`}
+                  className="border border-woodLight py-2 px-4 text-woodLight hover:bg-woodDark hover:text-white rounded-md text-center"
+                >
                   Details
-                </button>
+                </Link>
               </div>
             </div>
           )
