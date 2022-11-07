@@ -11,6 +11,9 @@ module.exports = {
         woodDark: "#876445",
         woodLight: "#B09B71",
       },
+      fontFamily: {
+        poppins: ["Poppins"],
+      },
     },
   },
   plugins: [require("flowbite/plugin")],
