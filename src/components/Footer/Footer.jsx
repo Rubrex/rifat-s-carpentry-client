@@ -10,7 +10,7 @@ const footerOverlay = {
 
 const Footer = () => {
   return (
-    <div className=" w-full bg-woodDark text-white" style={footerOverlay}>
+    <div className=" w-full bg-woodDark text-white pt-10" style={footerOverlay}>
       <img
         src={logo}
         alt="rifat's carpenter logo"
@@ -44,7 +44,7 @@ const Footer = () => {
             </div>
           </div>
         </div>
-        <hr className="my-10" />
+        <hr className="mt-10" />
         {/* Copyright */}
         <div className="py-10 text-center">
           <p>© Copyright 2018 - 2022 | Made with ❤️</p>

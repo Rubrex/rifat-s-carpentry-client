@@ -1,0 +1,9 @@
+.gradientToRight::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-image: linear-gradient(to right, black, rgba(255, 255, 0, 0));
+}
