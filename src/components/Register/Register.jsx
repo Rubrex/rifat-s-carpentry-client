@@ -1,10 +1,9 @@
-import { Button, Checkbox, Label, TextInput } from "flowbite-react";
-import React from "react";
+import React, { useContext } from "react";
+import { Button, Label, TextInput } from "flowbite-react";
 import loginBannerImg from "../../assets/logo/logo.png";
 import { FaFacebook, FaGoogle, FaGithub } from "react-icons/fa";
 import { Link } from "react-router-dom";
-
-const Login = () => {
+const Register = () => {
   return (
     <div className="container mx-auto my-10">
       <div className="grid grid-cols-1 md:grid-cols-2 items-center">
@@ -15,6 +14,33 @@ const Login = () => {
         {/* Right Form */}
         <div className="mb-10 md:mb-0 order-1 md:order-2">
           <form className="flex flex-col gap-4 max-w-[500px] p-14 border-slate-300 border mx-auto rounded-md">
+            {/* Name */}
+            <div>
+              <div className="mb-2 block">
+                <Label htmlFor="name1" value="Your Name" />
+              </div>
+              <TextInput
+                id="name1"
+                type="text"
+                name="name"
+                placeholder="Your Name"
+                required={true}
+              />
+            </div>
+            {/* Profile Image Link */}
+            <div>
+              <div className="mb-2 block">
+                <Label htmlFor="imageLink" value="Your Profile Image Link" />
+              </div>
+              <TextInput
+                id="imageLink"
+                type="text"
+                name="imageLink"
+                placeholder="Your Name"
+                required={true}
+              />
+            </div>
+            {/* Email */}
             <div>
               <div className="mb-2 block">
                 <Label htmlFor="email1" value="Your email" />
@@ -23,36 +49,34 @@ const Login = () => {
                 id="email1"
                 type="email"
                 name="email"
-                placeholder="name@flowbite.com"
+                placeholder="email@example.com"
                 required={true}
               />
             </div>
+            {/* Confirm Password */}
             <div>
               <div className="mb-2 block">
-                <Label htmlFor="password1" value="Your password" />
+                <Label htmlFor="password1" value="Confirm Password" />
               </div>
               <TextInput
                 id="password1"
-                name="password"
                 type="password"
+                name="password"
                 required={true}
               />
             </div>
-            <div className="flex items-center gap-2">
-              <Checkbox id="remember" name="checked" />
-              <Label htmlFor="remember">Remember me</Label>
+            {/* Already have an account */}
+            <div>
+              <Link to="/login">Already have an account</Link>
             </div>
-            <div className="flex items-center gap-2">
-              <Link to="/register">Don't have an account ?</Link>
-            </div>
-
             <Button
               type="submit"
               color="orange"
               className=" bg-woodDark hover:bg-woodLight text-white"
             >
-              Sign In
+              Sign Up
             </Button>
+            {/* Other Signin */}
             <p className="my-8 mx-auto">Or Sign in with</p>
             <div className="text-black text-4xl flex justify-center items-center gap-5">
               <FaGoogle className="cursor-pointer text-green-500" />
@@ -65,4 +89,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Register;
