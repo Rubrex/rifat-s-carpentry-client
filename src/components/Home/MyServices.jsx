@@ -2,9 +2,7 @@ import React from "react";
 
 const MyServices = ({ myservices }) => {
   const shortenDescription = (desc) => {
-    const cut = desc.slice(0, 100) + "...";
-    console.log(desc);
-    console.log(cut);
+    const cut = desc.slice(0, 100) + " ...";
     return cut;
   };
 

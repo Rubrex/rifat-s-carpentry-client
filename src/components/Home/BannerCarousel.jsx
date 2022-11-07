@@ -10,7 +10,7 @@ import banner_5 from "../../assets/images/banner/5.jpg";
 const BannerCarousel = () => {
   const bannerImages = [banner_1, banner_2, banner_3, banner_4, banner_5];
   return (
-    <Section className="h-56 sm:h-64 md:h-[600px] 2xl:h-[600px] w-full">
+    <section className="h-56 sm:h-64 md:h-[600px] 2xl:h-[600px] w-full">
       <Carousel>
         {bannerImages.map((bannerImg, index) => (
           <div key={index} className="relative  ">
@@ -46,7 +46,7 @@ const BannerCarousel = () => {
           </div>
         ))}
       </Carousel>
-    </Section>
+    </section>
   );
 };
 

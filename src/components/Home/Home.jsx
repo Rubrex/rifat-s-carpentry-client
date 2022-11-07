@@ -6,7 +6,6 @@ import MyServices from "./MyServices";
 const Home = () => {
   // Loader Data
   const myservices = useLoaderData();
-  console.log(myservices);
   return (
     <div>
       <BannerCarousel />
