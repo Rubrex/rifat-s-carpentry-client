@@ -1,15 +1,20 @@
-import { Table } from "flowbite-react";
+import { Modal, Table } from "flowbite-react";
 import React, { useContext, useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { FiEdit, FiTrash } from "react-icons/fi";
 import { AuthContext } from "../../contexts/AuthProvider";
+import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 
 const MyReviews = () => {
   // State
   const [myReviews, setMyReviews] = useState([]);
+  const [selectedReview, setSelectedReview] = useState({});
   const [refresh, setRefresh] = useState(true);
+  const [showEditModal, setShowEditModal] = useState(false);
+
   // Access Context
   const { user } = useContext(AuthContext);
+
   // Load My reviews from db using query
   useEffect(() => {
     fetch(`http://localhost:5000/reviews?email=${user?.email}`)
@@ -17,8 +22,6 @@ const MyReviews = () => {
       .then((data) => setMyReviews(data))
       .catch((err) => console.log(err));
   }, [refresh]);
-
-  console.log(myReviews.length);
 
   //   Handle Delete
   const handleDelete = (id) => {
@@ -34,6 +37,39 @@ const MyReviews = () => {
         }
       })
       .catch((err) => console.log(err));
+  };
+
+  // Handle Edit
+  const handleEdit = (review) => {
+    // Open Modal
+    setShowEditModal(true);
+    // Set selected review
+    setSelectedReview(review);
+  };
+
+  // HandleUpdateReview on Modal and update on Mongodb
+  const handleUpdateReview = (event) => {
+    event.preventDefault();
+    const ratings = 4; // needs change
+    const review_desc = event.target.customerReview.value;
+
+    const updateDoc = { ratings, review_desc };
+    fetch(`http://localhost:5000/reviews/${selectedReview._id}`, {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(updateDoc),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.modifiedCount) {
+          setRefresh(!refresh);
+          toast.success("Review Updated");
+        }
+      })
+      .catch((err) => console.log(err));
+
+    // Close Modal After Clicking Update
+    setShowEditModal(false);
   };
 
   return (
@@ -64,7 +100,10 @@ const MyReviews = () => {
                   <Table.Cell>{review.reviewer_review}</Table.Cell>
                   <Table.Cell>{review.service_price}</Table.Cell>
                   <Table.Cell>
-                    <button className="p-1  hover:bg-slate-500 rounded-md text-green-600 hover:text-white">
+                    <button
+                      onClick={() => handleEdit(review)}
+                      className="p-1  hover:bg-slate-500 rounded-md text-green-600 hover:text-white"
+                    >
                       <FiEdit className="text-xl " />
                     </button>
                   </Table.Cell>
@@ -86,6 +125,69 @@ const MyReviews = () => {
           <h2 className="text-2xl text-center mt-10">No Reviews found</h2>
         </div>
       )}
+      {/* Modal for Edit */}
+      <Modal
+        show={showEditModal}
+        size="lg"
+        popup={true}
+        onClose={() => setShowEditModal(false)}
+      >
+        <Modal.Header />
+        <Modal.Body>
+          <form
+            onSubmit={handleUpdateReview}
+            className="grid grid-cols-1 md:grid-cols-6 gap-4"
+          >
+            {/* Profile Image */}
+            <div className="self-center md:col-span-2">
+              <img
+                src={user?.photoURL}
+                className="w-32 h-32 object-cover rounded-full"
+                alt=""
+              />
+            </div>
+            {/* Edit ratings & Review */}
+            <div className="flex flex-col gap-3 md:col-span-4">
+              {/* Stars */}
+              <div className="flex items-center justify-between w-full">
+                <AiFillStar className="text-3xl text-woodLight cursor-pointer hover:text-woodDark" />
+                <AiFillStar className="text-3xl text-woodLight cursor-pointer hover:text-woodDark" />
+                <AiFillStar className="text-3xl text-woodLight cursor-pointer hover:text-woodDark" />
+                <AiFillStar className="text-3xl text-woodLight cursor-pointer hover:text-woodDark" />
+                <AiOutlineStar className="text-3xl" />
+              </div>
+              {/* Feedback Field */}
+              <div className="flex flex-col">
+                <label htmlFor="customerReview" className="text-sm mb-2">
+                  Update your feedback
+                </label>
+                <textarea
+                  id="customerReview"
+                  name="customerReview"
+                  rows="4"
+                  cols="40"
+                  placeholder="Your Feedback goes here"
+                  defaultValue={selectedReview.reviewer_review}
+                  onChange={(e) =>
+                    setSelectedReview({
+                      ...selectedReview,
+                      reviewer_review: e.target.value,
+                    })
+                  }
+                  className="border-woodDark border-2 active:border-woodLight outline-none rounded-md"
+                ></textarea>
+              </div>
+              {/* update brn */}
+              <button
+                type="submit"
+                className="border border-woodLight py-2 px-4 text-woodLight hover:bg-woodDark hover:text-white rounded-md"
+              >
+                Update Review
+              </button>
+            </div>
+          </form>
+        </Modal.Body>
+      </Modal>
     </div>
   );
 };
