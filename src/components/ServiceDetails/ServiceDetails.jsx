@@ -45,6 +45,8 @@ const ServiceDetails = () => {
 
     const review = {
       service_id: ser_id,
+      service_name: service_title,
+      service_price: service_price,
       reviewer_name: name,
       reviewer_img: profileImage,
       reviewer_email: email,
