@@ -4,8 +4,10 @@ import toast from "react-hot-toast";
 import { FiEdit, FiTrash } from "react-icons/fi";
 import { AuthContext } from "../../contexts/AuthProvider";
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
+import useTitleChange from "../../hooks/useTitleChange";
 
 const MyReviews = () => {
+  useTitleChange("My Reviews");
   // State
   const [myReviews, setMyReviews] = useState([]);
   const [selectedReview, setSelectedReview] = useState({});

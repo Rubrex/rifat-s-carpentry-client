@@ -5,8 +5,10 @@ import { Link, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import { AuthContext } from "../../contexts/AuthProvider";
 import OtherSignInProvider from "../common/OtherSignInProvider/OtherSignInProvider";
+import useTitleChange from "../../hooks/useTitleChange";
 
 const Login = () => {
+  useTitleChange("Login");
   // Hooks
   const navigate = useNavigate();
   // Access Context

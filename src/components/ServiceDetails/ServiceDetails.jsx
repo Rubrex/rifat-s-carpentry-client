@@ -6,6 +6,7 @@ import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthProvider";
 import GiveYourFeedback from "./GiveYourFeedback";
 import ReviewSection from "./ReviewSection";
+import useTitleChange from "../../hooks/useTitleChange";
 
 const ServiceDetails = () => {
   // Loader Data
@@ -17,6 +18,8 @@ const ServiceDetails = () => {
     service_rating,
     service_description,
   } = useLoaderData();
+  // Change title
+  useTitleChange(`${service_title}`);
   // States
   const [reviews, setReviews] = useState([]);
   const [refresh, setRefresh] = useState(true);

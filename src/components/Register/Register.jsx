@@ -6,7 +6,9 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthProvider";
 import toast from "react-hot-toast";
 import OtherSignInProvider from "../common/OtherSignInProvider/OtherSignInProvider";
+import useTitleChange from "../../hooks/useTitleChange";
 const Register = () => {
+  useTitleChange("Register");
   // Access Context
   const { createUser, updateUser } = useContext(AuthContext);
   // Event Handlers

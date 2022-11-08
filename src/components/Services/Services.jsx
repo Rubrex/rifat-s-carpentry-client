@@ -2,9 +2,11 @@ import React from "react";
 import { PhotoProvider, PhotoView } from "react-photo-view";
 import "react-photo-view/dist/react-photo-view.css";
 import { Link, useLoaderData } from "react-router-dom";
+import useTitleChange from "../../hooks/useTitleChange";
 
 const Services = () => {
   const myservices = useLoaderData();
+  useTitleChange(`(${myservices.length}) Services`);
 
   const shortenDescription = (desc) => {
     const cut = desc.slice(0, 100) + " ...";

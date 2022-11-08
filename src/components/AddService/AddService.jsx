@@ -1,8 +1,10 @@
 import { Button, Label, TextInput } from "flowbite-react";
 import React, { useEffect } from "react";
 import toast from "react-hot-toast";
+import useTitleChange from "../../hooks/useTitleChange";
 
 const AddService = () => {
+  useTitleChange("Add Service");
   // Handle Add Service
   const handleAddService = (event) => {
     event.preventDefault();
