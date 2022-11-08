@@ -1,9 +1,14 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { PhotoProvider, PhotoView } from "react-photo-view";
 import "react-photo-view/dist/react-photo-view.css";
 import { useLoaderData } from "react-router-dom";
+import GiveYourFeedback from "./GiveYourFeedback";
+import ReviewSection from "./ReviewSection";
 
 const ServiceDetails = () => {
+  // States
+  const [reviews, setReviews] = useState([]);
+
   // Loader Data
   const {
     service_id,
@@ -13,6 +18,19 @@ const ServiceDetails = () => {
     service_rating,
     service_description,
   } = useLoaderData();
+
+  // Side effects
+  // Load Reviews
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await fetch(
+        `http://localhost:5000/reviews/${service_id}`
+      );
+      const data = await response.json();
+      setReviews(data);
+    };
+    fetchData();
+  }, [service_id]);
 
   return (
     <section className="container mx-auto">
@@ -44,9 +62,9 @@ const ServiceDetails = () => {
       </main>
       <hr className="my-10" />
       {/* Review Sections */}
-      <div>
-        <p>Reviews</p>
-      </div>
+      <ReviewSection reviews={reviews} />
+      {/* Feedback / Login Form */}
+      <GiveYourFeedback />
     </section>
   );
 };
