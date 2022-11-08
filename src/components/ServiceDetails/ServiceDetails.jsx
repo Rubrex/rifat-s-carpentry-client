@@ -58,7 +58,7 @@ const ServiceDetails = () => {
       reviewer_origin: origin,
       reviewer_added: added,
     };
-    fetch("http://localhost:5000/reviews", {
+    fetch("https://rifat-carpenter-server.vercel.app/reviews", {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(review),
@@ -79,7 +79,7 @@ const ServiceDetails = () => {
   useEffect(() => {
     const fetchData = async () => {
       const response = await fetch(
-        `http://localhost:5000/reviews/${service_id}`
+        `https://rifat-carpenter-server.vercel.app/reviews/${service_id}`
       );
       const data = await response.json();
       setReviews(data);

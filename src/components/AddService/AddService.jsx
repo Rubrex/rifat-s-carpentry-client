@@ -10,7 +10,7 @@ const AddService = () => {
 
   // Get Total Services count
   useEffect(() => {
-    fetch("http://localhost:5000/checkServices")
+    fetch("https://rifat-carpenter-server.vercel.app/checkServices")
       .then((res) => res.json())
       .then((data) => setTotalServiceCount(data.services))
       .catch((err) => console.log(err));
@@ -37,7 +37,7 @@ const AddService = () => {
     };
     console.log(addService);
     // Send new Service to the database
-    fetch("http://localhost:5000/services", {
+    fetch("https://rifat-carpenter-server.vercel.app/services", {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(addService),

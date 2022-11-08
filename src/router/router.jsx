@@ -20,18 +20,22 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
-        loader: async () => fetch("http://localhost:5000/services?service=3"),
+        loader: async () =>
+          fetch("https://rifat-carpenter-server.vercel.app/services?service=3"),
       },
       {
         path: "/services",
         element: <Services />,
-        loader: async () => fetch("http://localhost:5000/services?service=*"),
+        loader: async () =>
+          fetch("https://rifat-carpenter-server.vercel.app/services?service=*"),
       },
       {
         path: "/services/:id",
         element: <ServiceDetails />,
         loader: async ({ params }) =>
-          fetch(`http://localhost:5000/services/${params.id}`),
+          fetch(
+            `https://rifat-carpenter-server.vercel.app/services/${params.id}`
+          ),
       },
       {
         path: "/addservice",

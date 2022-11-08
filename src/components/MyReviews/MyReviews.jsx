@@ -19,7 +19,9 @@ const MyReviews = () => {
 
   // Load My reviews from db using query
   useEffect(() => {
-    fetch(`http://localhost:5000/reviews?email=${user?.email}`)
+    fetch(
+      `https://rifat-carpenter-server.vercel.app/reviews?email=${user?.email}`
+    )
       .then((res) => res.json())
       .then((data) => setMyReviews(data))
       .catch((err) => console.log(err));
@@ -27,7 +29,7 @@ const MyReviews = () => {
 
   //   Handle Delete
   const handleDelete = (id) => {
-    fetch(`http://localhost:5000/reviews/${id}`, {
+    fetch(`https://rifat-carpenter-server.vercel.app/reviews/${id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())
@@ -56,11 +58,14 @@ const MyReviews = () => {
     const review_desc = event.target.customerReview.value;
 
     const updateDoc = { ratings, review_desc };
-    fetch(`http://localhost:5000/reviews/${selectedReview._id}`, {
-      method: "PATCH",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(updateDoc),
-    })
+    fetch(
+      `https://rifat-carpenter-server.vercel.app/reviews/${selectedReview._id}`,
+      {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(updateDoc),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         if (data.modifiedCount) {
