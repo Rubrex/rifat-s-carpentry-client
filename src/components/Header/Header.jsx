@@ -63,6 +63,16 @@ const Header = () => {
           <NavLink className="hover:text-woodDark " to="/blogs">
             Blogs
           </NavLink>
+          {user?.email && (
+            <>
+              <NavLink className="hover:text-woodDark " to="/addservice">
+                Add Service
+              </NavLink>
+              <NavLink className="hover:text-woodDark " to="/myreviews">
+                My Reviews
+              </NavLink>
+            </>
+          )}
         </Navbar.Collapse>
       </Navbar>
     </div>

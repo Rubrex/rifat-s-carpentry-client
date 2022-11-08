@@ -19,10 +19,12 @@ const Register = () => {
 
     createUser(email, password)
       .then((res) => {
-        const profile = { displayName: name, photoURL: profileImg };
-        updateUser(profile);
-        toast.success("Account created successfully");
-        console.log(res);
+        if (res.user?.email) {
+          const profile = { displayName: name, photoURL: profileImg };
+          updateUser(profile);
+          toast.success("Account created successfully");
+          navigate("/");
+        }
       })
       .catch((err) => console.log(err));
   };
