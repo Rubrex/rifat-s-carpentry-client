@@ -30,14 +30,18 @@ const Services = () => {
           }) => (
             <div
               key={service_id}
-              className="p-5 rounded-md  mx-auto bg-slate-50"
+              className="p-5 rounded-md  mx-auto bg-slate-50 flex flex-col justify-between"
             >
               <PhotoProvider>
                 <PhotoView src={service_img}>
-                  <img src={service_img} alt="" />
+                  <img
+                    src={service_img}
+                    alt=""
+                    className="md:w-72 md:h-72 object-cover mx-auto rounded-md"
+                  />
                 </PhotoView>
               </PhotoProvider>
-              <div className="mt-5 flex flex-col gap-5">
+              <div className="mt-5 flex flex-col gap-5 justify-between">
                 <p className="text-xl font-medium">{service_title}</p>
                 <div className="flex items-center justify-between">
                   <p>Price: ${service_price}</p>

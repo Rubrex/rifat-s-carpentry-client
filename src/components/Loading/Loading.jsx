@@ -2,7 +2,9 @@ import React from "react";
 
 const Loading = () => {
   return (
-    <div className="h-screen flex justify-center items-center border-dashed border-2 border-woodDark animate-spin"></div>
+    <div className=" ">
+      <div className="w-16 h-16 mx-auto mt-24 border-dashed border-4 rounded-full border-woodDark animate-spin"></div>
+    </div>
   );
 };
 
