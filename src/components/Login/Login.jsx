@@ -1,10 +1,31 @@
 import { Button, Checkbox, Label, TextInput } from "flowbite-react";
-import React from "react";
+import React, { useContext } from "react";
 import loginBannerImg from "../../assets/logo/logo.png";
 import { FaFacebook, FaGoogle, FaGithub } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
+import { AuthContext } from "../../contexts/AuthProvider";
 
 const Login = () => {
+  // Hooks
+  const navigate = useNavigate();
+  // Access Context
+  const { logIn } = useContext(AuthContext);
+  // Event Handlers
+  const handleLogin = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const email = form.email.value;
+    const password = form.password.value;
+
+    logIn(email, password)
+      .then((res) => {
+        toast.success("Logged In Successfully");
+        navigate("/");
+      })
+      .catch((err) => console.log(err));
+  };
+
   return (
     <div className="container mx-auto my-10">
       <div className="grid grid-cols-1 md:grid-cols-2 items-center">
@@ -14,7 +35,10 @@ const Login = () => {
         </div>
         {/* Right Form */}
         <div className="mb-10 md:mb-0 order-1 md:order-2">
-          <form className="flex flex-col gap-4 max-w-[500px] p-14 border-slate-300 border mx-auto rounded-md">
+          <form
+            onSubmit={handleLogin}
+            className="flex flex-col gap-4 max-w-[500px] p-14 border-slate-300 border mx-auto rounded-md"
+          >
             <div>
               <div className="mb-2 block">
                 <Label htmlFor="email1" value="Your email" />

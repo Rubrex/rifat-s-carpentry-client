@@ -26,7 +26,6 @@ const Register = () => {
       })
       .catch((err) => console.log(err));
   };
-  // SignUp Handler
 
   return (
     <div className="container mx-auto my-10">
