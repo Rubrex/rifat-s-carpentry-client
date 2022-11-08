@@ -1,10 +1,21 @@
 import { Button, Label, TextInput } from "flowbite-react";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import useTitleChange from "../../hooks/useTitleChange";
 
 const AddService = () => {
   useTitleChange("Add Service");
+  // States
+  const [totalServiceCount, setTotalServiceCount] = useState(0);
+
+  // Get Total Services count
+  useEffect(() => {
+    fetch("http://localhost:5000/checkServices")
+      .then((res) => res.json())
+      .then((data) => setTotalServiceCount(data.services))
+      .catch((err) => console.log(err));
+  }, []);
+
   // Handle Add Service
   const handleAddService = (event) => {
     event.preventDefault();
@@ -16,7 +27,7 @@ const AddService = () => {
     const service_description = form.desc.value;
 
     const addService = {
-      service_id: "1",
+      service_id: totalServiceCount + 1,
       service_rating: "4",
       service_added: "02/06/2022",
       service_title,
