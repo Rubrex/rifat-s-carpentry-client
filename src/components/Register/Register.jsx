@@ -3,7 +3,31 @@ import { Button, Label, TextInput } from "flowbite-react";
 import loginBannerImg from "../../assets/logo/logo.png";
 import { FaFacebook, FaGoogle, FaGithub } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../contexts/AuthProvider";
+import toast from "react-hot-toast";
 const Register = () => {
+  // Access Context
+  const { createUser, updateUser } = useContext(AuthContext);
+  // Event Handlers
+  const handleRegistration = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const name = form.name.value;
+    const profileImg = form.imageLink.value;
+    const email = form.email.value;
+    const password = form.password.value;
+
+    createUser(email, password)
+      .then((res) => {
+        const profile = { displayName: name, photoURL: profileImg };
+        updateUser(profile);
+        toast.success("Account created successfully");
+        console.log(res);
+      })
+      .catch((err) => console.log(err));
+  };
+  // SignUp Handler
+
   return (
     <div className="container mx-auto my-10">
       <div className="grid grid-cols-1 md:grid-cols-2 items-center">
@@ -13,7 +37,10 @@ const Register = () => {
         </div>
         {/* Right Form */}
         <div className="mb-10 md:mb-0 order-1 md:order-2">
-          <form className="flex flex-col gap-4 max-w-[500px] p-14 border-slate-300 border mx-auto rounded-md">
+          <form
+            onSubmit={handleRegistration}
+            className="flex flex-col gap-4 max-w-[500px] p-14 border-slate-300 border mx-auto rounded-md"
+          >
             {/* Name */}
             <div>
               <div className="mb-2 block">
@@ -36,7 +63,7 @@ const Register = () => {
                 id="imageLink"
                 type="text"
                 name="imageLink"
-                placeholder="Your Name"
+                placeholder="Link to the image"
                 required={true}
               />
             </div>

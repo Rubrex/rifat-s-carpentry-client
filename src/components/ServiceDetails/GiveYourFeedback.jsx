@@ -14,7 +14,7 @@ const GiveYourFeedback = () => {
         <div className="p-2 border-2 border-woodDark rounded-full flex items-center w-80 justify-center">
           <div className="flex flex-col items-center">
             <img
-              src="https://media.istockphoto.com/photos/beautiful-afro-girl-with-curly-hairstyle-picture-id1381221247?b=1&k=20&m=1381221247&s=170667a&w=0&h=4bt0RFmAffRSqrKa2N2vJAFbWgmbRg7x-0ziJaRtpxE="
+              src={user?.photoURL}
               alt=""
               className="w-14 h-14 rounded-full object-cover"
             />
