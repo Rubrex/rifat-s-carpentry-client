@@ -44,7 +44,7 @@ const AuthProvider = ({ children }) => {
   //   Auth State Observer
   useEffect(() => {
     onAuthStateChanged(auth, (currentUser) => {
-      if (currentUser?.email) {
+      if (currentUser?.email || currentUser === null) {
         setUser(currentUser);
       }
       setLoading(false);
