@@ -1,7 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
+import { AuthContext } from "../../contexts/AuthProvider";
 
 const GiveYourFeedback = () => {
+  //Access Context
+  const { user } = useContext(AuthContext);
+
   return (
     <div className="container mx-auto my-10">
       <form className="p-5 max-w-3xl border rounded-md flex flex-col items-center gap-5 mx-auto">
@@ -17,7 +21,7 @@ const GiveYourFeedback = () => {
           </div>
           {/* stars */}
           <div className="flex flex-col justify-between ml-5">
-            <p className="text-sm text-slate-500">Valir Morghul</p>
+            <p className="text-sm text-slate-500">{user?.displayName}</p>
             <div className="flex items-center justify-between w-full">
               <AiFillStar className="text-3xl text-woodLight cursor-pointer hover:text-woodDark" />
               <AiFillStar className="text-3xl text-woodLight cursor-pointer hover:text-woodDark" />
@@ -29,7 +33,7 @@ const GiveYourFeedback = () => {
         </div>
         {/* Feedback Field */}
         <div className="flex flex-col">
-          <label for="customerReview" className="text-sm mb-2">
+          <label htmlFor="customerReview" className="text-sm mb-2">
             Give your Feedback:
           </label>
           <textarea
@@ -37,11 +41,9 @@ const GiveYourFeedback = () => {
             name="customerReview"
             rows="4"
             cols="50"
+            placeholder="Your Feedback goes here"
             className="border-woodDark border-2 active:border-woodLight outline-none rounded-md"
-          >
-            At w3schools.com you will learn how to make a website. They offer
-            free tutorials in all web development technologies.
-          </textarea>
+          ></textarea>
         </div>
         {/* Submit brn */}
         <button className="border border-woodLight py-2 px-4 text-woodLight hover:bg-woodDark hover:text-white rounded-md">
