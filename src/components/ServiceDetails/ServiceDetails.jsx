@@ -1,14 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import toast from "react-hot-toast";
 import { PhotoProvider, PhotoView } from "react-photo-view";
 import "react-photo-view/dist/react-photo-view.css";
 import { useLoaderData } from "react-router-dom";
+import { AuthContext } from "../../contexts/AuthProvider";
 import GiveYourFeedback from "./GiveYourFeedback";
 import ReviewSection from "./ReviewSection";
 
 const ServiceDetails = () => {
-  // States
-  const [reviews, setReviews] = useState([]);
-
   // Loader Data
   const {
     service_id,
@@ -18,6 +17,57 @@ const ServiceDetails = () => {
     service_rating,
     service_description,
   } = useLoaderData();
+  // States
+  const [reviews, setReviews] = useState([]);
+  const [refresh, setRefresh] = useState(true);
+  //Access Context
+  const { user } = useContext(AuthContext);
+  // event handler for Feedback
+  const handleFeedback = (event) => {
+    event.preventDefault();
+    const date = new Date();
+    let day = date.getDate();
+    let month = date.getMonth() + 1;
+    let year = date.getFullYear();
+    let time = date.toLocaleTimeString();
+
+    const form = event.target;
+
+    const ser_id = service_id;
+    const added = `${time} ${day}/${month}/${year}`;
+    const name = user.displayName;
+    const profileImage = user.photoURL;
+    const email = user.email;
+    const ratings = 4;
+    const feedback = form.customerReview.value;
+    const origin = "Google";
+    console.log(added);
+
+    const review = {
+      service_id: ser_id,
+      reviewer_name: name,
+      reviewer_img: profileImage,
+      reviewer_email: email,
+      reviewer_ratings: ratings,
+      reviewer_review: feedback,
+      reviewer_origin: origin,
+      reviewer_added: added,
+    };
+    fetch("http://localhost:5000/reviews", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify(review),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.acknowledged) {
+          toast.success("Thanks for your feedback");
+          form.reset();
+          setRefresh(!refresh);
+        }
+      })
+      .catch((err) => console.log(err));
+  };
 
   // Side effects
   // Load Reviews
@@ -30,7 +80,7 @@ const ServiceDetails = () => {
       setReviews(data);
     };
     fetchData();
-  }, [service_id]);
+  }, [service_id, refresh]);
 
   return (
     <section className="container mx-auto">
@@ -64,7 +114,11 @@ const ServiceDetails = () => {
       {/* Review Sections */}
       <ReviewSection reviews={reviews} />
       {/* Feedback / Login Form */}
-      <GiveYourFeedback service_id={service_id} />
+      <GiveYourFeedback
+        service_id={service_id}
+        handleFeedback={handleFeedback}
+        user={user}
+      />
     </section>
   );
 };
