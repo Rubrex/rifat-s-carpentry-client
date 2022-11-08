@@ -64,7 +64,7 @@ const ServiceDetails = () => {
       {/* Review Sections */}
       <ReviewSection reviews={reviews} />
       {/* Feedback / Login Form */}
-      <GiveYourFeedback />
+      <GiveYourFeedback service_id={service_id} />
     </section>
   );
 };
