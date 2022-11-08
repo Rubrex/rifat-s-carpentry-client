@@ -1,7 +1,5 @@
-import React, { useContext } from "react";
-import toast from "react-hot-toast";
+import React from "react";
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
-import { AuthContext } from "../../contexts/AuthProvider";
 
 const GiveYourFeedback = ({ service_id, handleFeedback, user }) => {
   return (
