@@ -10,7 +10,7 @@ const footerOverlay = {
 
 const Footer = () => {
   return (
-    <div className=" w-full bg-woodDark text-white pt-10" style={footerOverlay}>
+    <div className=" w-full bg-woodDark text-white mt-10" style={footerOverlay}>
       <img
         src={logo}
         alt="rifat's carpenter logo"

@@ -1,10 +1,10 @@
 import { Button, Checkbox, Label, TextInput } from "flowbite-react";
 import React, { useContext } from "react";
 import loginBannerImg from "../../assets/logo/logo.png";
-import { FaFacebook, FaGoogle, FaGithub } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import { AuthContext } from "../../contexts/AuthProvider";
+import OtherSignInProvider from "../common/OtherSignInProvider/OtherSignInProvider";
 
 const Login = () => {
   // Hooks
@@ -20,8 +20,10 @@ const Login = () => {
 
     logIn(email, password)
       .then((res) => {
-        toast.success("Logged In Successfully");
-        navigate("/");
+        if (res.user?.email) {
+          toast.success("Logged In Successfully");
+          navigate("/");
+        }
       })
       .catch((err) => console.log(err));
   };
@@ -77,11 +79,7 @@ const Login = () => {
             >
               Sign In
             </Button>
-            <p className="my-8 mx-auto">Or Sign in with</p>
-            <div className="text-black text-4xl flex justify-center items-center gap-5">
-              <FaGoogle className="cursor-pointer text-green-500" />
-              <FaGithub className="cursor-pointer text-slate-800" />
-            </div>
+            <OtherSignInProvider />
           </form>
         </div>
       </div>

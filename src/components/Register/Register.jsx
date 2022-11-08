@@ -5,6 +5,7 @@ import { FaFacebook, FaGoogle, FaGithub } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthProvider";
 import toast from "react-hot-toast";
+import OtherSignInProvider from "../common/OtherSignInProvider/OtherSignInProvider";
 const Register = () => {
   // Access Context
   const { createUser, updateUser } = useContext(AuthContext);
@@ -105,11 +106,7 @@ const Register = () => {
               Sign Up
             </Button>
             {/* Other Signin */}
-            <p className="my-8 mx-auto">Or Sign in with</p>
-            <div className="text-black text-4xl flex justify-center items-center gap-5">
-              <FaGoogle className="cursor-pointer text-green-500" />
-              <FaGithub className="cursor-pointer text-slate-800" />
-            </div>
+            <OtherSignInProvider />
           </form>
         </div>
       </div>
