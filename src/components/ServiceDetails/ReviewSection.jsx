@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 const ReviewSection = ({ reviews }) => {
   return (
     <div>
-      <h2>Thanks for giving your feedbacks.</h2>
       {/* Reviews Section */}
       <div className="flex flex-col gap-5">
         {reviews.map(

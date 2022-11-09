@@ -17,7 +17,7 @@ const Footer = () => {
         className="mx-auto max-h-32"
       />
       <div className="container mx-auto pt-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-7">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-7 px-5 lg:px-10">
           {/* About me */}
           <div>
             <h2 className="text-lg font-medium border-b-2 border-woodDark inline pb-1">
@@ -47,7 +47,7 @@ const Footer = () => {
         <hr className="mt-10" />
         {/* Copyright */}
         <div className="py-10 text-center">
-          <p>© Copyright 2018 - 2022 | Made with ❤️</p>
+          <p>© 2021-2022 rifat's carpentry. All rights reserved</p>
         </div>
       </div>
     </div>

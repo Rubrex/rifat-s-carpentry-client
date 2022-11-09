@@ -31,7 +31,7 @@ const GiveYourFeedback = ({ service_id, handleFeedback, user }) => {
           </div>
         </div>
         {/* Feedback Field */}
-        <div className="flex flex-col">
+        <div className="flex flex-col w-full items-center">
           <label htmlFor="customerReview" className="text-sm mb-2">
             Give your Feedback:
           </label>
@@ -39,9 +39,8 @@ const GiveYourFeedback = ({ service_id, handleFeedback, user }) => {
             id="customerReview"
             name="customerReview"
             rows="4"
-            cols="50"
             placeholder="Your Feedback goes here"
-            className="border-woodDark border-2 active:border-woodLight outline-none rounded-md"
+            className="w-full md:w-2/3 px-5  border-woodDark border-2 active:border-woodLight outline-none rounded-md"
           ></textarea>
         </div>
         {/* Submit brn */}
