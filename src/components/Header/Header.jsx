@@ -29,7 +29,7 @@ const Header = () => {
             {user?.email ? (
               <button
                 onClick={handleLogout}
-                className="bg-woodDark hover:bg-woodLight text-white py-1 px-4"
+                className="bg-woodDark border-2 border-transparent  hover:bg-woodLight text-white py-1 px-4"
                 to="/register"
               >
                 Logout
@@ -37,13 +37,13 @@ const Header = () => {
             ) : (
               <>
                 <NavLink
-                  className="bg-woodDark hover:bg-woodLight text-white py-1 px-4"
+                  className="bg-woodDark  border-2 border-transparent hover:bg-woodLight text-white py-1 px-4"
                   to="/register"
                 >
                   Register
                 </NavLink>
                 <NavLink
-                  className=" hover:bg-woodLight   text-woodDark py-1 px-4"
+                  className=" hover:bg-woodLight border-2 border-transparent   text-woodDark py-1 px-4"
                   to="/login"
                 >
                   Login

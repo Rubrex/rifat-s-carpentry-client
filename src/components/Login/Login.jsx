@@ -1,7 +1,7 @@
 import { Button, Checkbox, Label, TextInput } from "flowbite-react";
 import React, { useContext } from "react";
 import loginBannerImg from "../../assets/logo/logo.png";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import { AuthContext } from "../../contexts/AuthProvider";
 import OtherSignInProvider from "../common/OtherSignInProvider/OtherSignInProvider";
@@ -11,6 +11,10 @@ const Login = () => {
   useTitleChange("Login");
   // Hooks
   const navigate = useNavigate();
+  const location = useLocation();
+  // variables
+  const from = location.state?.from?.pathname || "/";
+  console.log(from);
   // Access Context
   const { logIn } = useContext(AuthContext);
   // Event Handlers
@@ -24,7 +28,7 @@ const Login = () => {
       .then((res) => {
         if (res.user?.email) {
           toast.success("Logged In Successfully");
-          navigate("/");
+          navigate(from, { replace: true });
         }
       })
       .catch((err) => console.log(err));
