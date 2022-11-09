@@ -23,7 +23,7 @@ const OtherSignInProvider = () => {
         if (user?.email) {
           const currentUser = { email: result.user.email };
           console.log(currentUser);
-          fetch("http://localhost:5000/jwt", {
+          fetch("https://rifat-carpenter-server.vercel.app/jwt", {
             method: "POST",
             headers: {
               "content-type": "application/json",
@@ -52,7 +52,7 @@ const OtherSignInProvider = () => {
         const user = result.user;
         if (user?.email) {
           const currentUser = { email: result.user.email };
-          fetch("http://localhost:5000/jwt", {
+          fetch("https://rifat-carpenter-server.vercel.app/jwt", {
             method: "POST",
             headers: {
               "content-type": "application/json",

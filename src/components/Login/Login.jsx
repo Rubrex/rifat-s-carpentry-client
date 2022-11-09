@@ -30,7 +30,7 @@ const Login = () => {
           // save JWT Token
           const currentUser = { email: res.user.email };
 
-          fetch("http://localhost:5000/jwt", {
+          fetch("https://rifat-carpenter-server.vercel.app/jwt", {
             method: "POST",
             headers: {
               "content-type": "application/json",

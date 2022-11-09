@@ -22,11 +22,14 @@ const MyReviews = () => {
 
   // Load My reviews from db using query
   useEffect(() => {
-    fetch(`http://localhost:5000/reviews?email=${user?.email}`, {
-      headers: {
-        authorization: "Bearer " + localStorage.getItem("carpentry_token"),
-      },
-    })
+    fetch(
+      `https://rifat-carpenter-server.vercel.app/reviews?email=${user?.email}`,
+      {
+        headers: {
+          authorization: "Bearer " + localStorage.getItem("carpentry_token"),
+        },
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         setMyReviews(data);
