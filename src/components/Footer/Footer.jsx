@@ -37,8 +37,8 @@ const Footer = () => {
                 My Services
               </h2>
             </div>
-            <div>
-              <h2 className="text-lg font-medium border-b-2 border-woodDark inline pb-1">
+            <div className="justify-self-end">
+              <h2 className="text-lg font-medium border-b-2 border-woodDark inline pb-1 text-right">
                 Follow Me
               </h2>
             </div>

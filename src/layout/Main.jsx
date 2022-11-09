@@ -1,13 +1,16 @@
 import React from "react";
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigation } from "react-router-dom";
 import Footer from "../components/Footer/Footer";
 import Header from "../components/Header/Header";
+import Loading from "../components/Loading/Loading";
 
 const Main = () => {
+  const navigation = useNavigation();
+  console.log(navigation);
   return (
     <div className="font-poppins">
       <Header />
-      <Outlet />
+      {navigation.state === "idle" ? <Outlet /> : <Loading />}
       <Footer />
     </div>
   );

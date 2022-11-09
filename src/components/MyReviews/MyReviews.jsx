@@ -5,6 +5,8 @@ import { FiEdit, FiTrash } from "react-icons/fi";
 import { AuthContext } from "../../contexts/AuthProvider";
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 import useTitleChange from "../../hooks/useTitleChange";
+import Loading from "../Loading/Loading";
+import Swal from "sweetalert2";
 
 const MyReviews = () => {
   useTitleChange("My Reviews");
@@ -13,6 +15,7 @@ const MyReviews = () => {
   const [selectedReview, setSelectedReview] = useState({});
   const [refresh, setRefresh] = useState(true);
   const [showEditModal, setShowEditModal] = useState(false);
+  const [isLoading, setLoading] = useState(true);
 
   // Access Context
   const { user } = useContext(AuthContext);
@@ -23,24 +26,39 @@ const MyReviews = () => {
       `https://rifat-carpenter-server.vercel.app/reviews?email=${user?.email}`
     )
       .then((res) => res.json())
-      .then((data) => setMyReviews(data))
+      .then((data) => {
+        setMyReviews(data);
+        setLoading(false);
+      })
       .catch((err) => console.log(err));
   }, [refresh]);
 
   //   Handle Delete
   const handleDelete = (id) => {
-    fetch(`https://rifat-carpenter-server.vercel.app/reviews/${id}`, {
-      method: "DELETE",
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data) {
-          setRefresh(!refresh);
-          console.log(data);
-          toast.success("Deleted Review");
-        }
-      })
-      .catch((err) => console.log(err));
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`https://rifat-carpenter-server.vercel.app/reviews/${id}`, {
+          method: "DELETE",
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data) {
+              setRefresh(!refresh);
+              console.log(data);
+              Swal.fire("Deleted!", "Your file has been deleted.", "success");
+            }
+          })
+          .catch((err) => console.log(err));
+      }
+    });
   };
 
   // Handle Edit
@@ -83,55 +101,62 @@ const MyReviews = () => {
     <div className="container mx-auto my-10">
       {/* Reviews Table */}
       {/* Check if theres any reviews available */}
-      {myReviews.length ? (
-        <>
-          <Table hoverable={true}>
-            <Table.Head>
-              <Table.HeadCell>Service name</Table.HeadCell>
-              <Table.HeadCell>Rating</Table.HeadCell>
-              <Table.HeadCell>Review</Table.HeadCell>
-              <Table.HeadCell>Price</Table.HeadCell>
-              <Table.HeadCell>Edit</Table.HeadCell>
-              <Table.HeadCell>Delete</Table.HeadCell>
-            </Table.Head>
-            <Table.Body className="divide-y">
-              {myReviews.map((review) => (
-                <Table.Row
-                  key={review._id}
-                  className="bg-white dark:border-gray-700 dark:bg-gray-800"
-                >
-                  <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
-                    {review.service_name}
-                  </Table.Cell>
-                  <Table.Cell>{review.reviewer_ratings}</Table.Cell>
-                  <Table.Cell>{review.reviewer_review}</Table.Cell>
-                  <Table.Cell>{review.service_price}</Table.Cell>
-                  <Table.Cell>
-                    <button
-                      onClick={() => handleEdit(review)}
-                      className="p-1  hover:bg-slate-500 rounded-md text-green-600 hover:text-white"
-                    >
-                      <FiEdit className="text-xl " />
-                    </button>
-                  </Table.Cell>
-                  <Table.Cell>
-                    <button
-                      onClick={() => handleDelete(review._id)}
-                      className="p-1  hover:bg-slate-500 rounded-md text-red-600 hover:text-white"
-                    >
-                      <FiTrash className="text-xl   " />
-                    </button>
-                  </Table.Cell>
-                </Table.Row>
-              ))}
-            </Table.Body>
-          </Table>
-        </>
+      {isLoading ? (
+        <Loading />
       ) : (
-        <div>
-          <h2 className="text-2xl text-center mt-10">No Reviews found</h2>
-        </div>
+        <>
+          {myReviews.length ? (
+            <>
+              <Table hoverable={true}>
+                <Table.Head>
+                  <Table.HeadCell>Service name</Table.HeadCell>
+                  <Table.HeadCell>Rating</Table.HeadCell>
+                  <Table.HeadCell>Review</Table.HeadCell>
+                  <Table.HeadCell>Price</Table.HeadCell>
+                  <Table.HeadCell>Edit</Table.HeadCell>
+                  <Table.HeadCell>Delete</Table.HeadCell>
+                </Table.Head>
+                <Table.Body className="divide-y">
+                  {myReviews.map((review) => (
+                    <Table.Row
+                      key={review._id}
+                      className="bg-white dark:border-gray-700 dark:bg-gray-800"
+                    >
+                      <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
+                        {review.service_name}
+                      </Table.Cell>
+                      <Table.Cell>{review.reviewer_ratings}</Table.Cell>
+                      <Table.Cell>{review.reviewer_review}</Table.Cell>
+                      <Table.Cell>{review.service_price}</Table.Cell>
+                      <Table.Cell>
+                        <button
+                          onClick={() => handleEdit(review)}
+                          className="p-1  hover:bg-slate-500 rounded-md text-green-600 hover:text-white"
+                        >
+                          <FiEdit className="text-xl " />
+                        </button>
+                      </Table.Cell>
+                      <Table.Cell>
+                        <button
+                          onClick={() => handleDelete(review._id)}
+                          className="p-1  hover:bg-slate-500 rounded-md text-red-600 hover:text-white"
+                        >
+                          <FiTrash className="text-xl   " />
+                        </button>
+                      </Table.Cell>
+                    </Table.Row>
+                  ))}
+                </Table.Body>
+              </Table>
+            </>
+          ) : (
+            <div>
+              <h2 className="text-2xl text-center mt-10">No Reviews found</h2>
+            </div>
+          )}
+        </>
       )}
+
       {/* Modal for Edit */}
       <Modal
         show={showEditModal}
