@@ -27,6 +27,20 @@ const Login = () => {
     logIn(email, password)
       .then((res) => {
         if (res.user?.email) {
+          // save JWT Token
+          const currentUser = { email: res.user.email };
+
+          fetch("http://localhost:5000/jwt", {
+            method: "POST",
+            headers: {
+              "content-type": "application/json",
+            },
+            body: JSON.stringify(currentUser),
+          })
+            .then((res) => res.json())
+            .then((data) =>
+              localStorage.setItem("carpentry_token", data.token)
+            );
           toast.success("Logged In Successfully");
           navigate(from, { replace: true });
         }

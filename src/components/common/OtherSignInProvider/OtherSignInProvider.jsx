@@ -21,6 +21,19 @@ const OtherSignInProvider = () => {
       .then((result) => {
         const user = result.user;
         if (user?.email) {
+          const currentUser = { email: result.user.email };
+          console.log(currentUser);
+          fetch("http://localhost:5000/jwt", {
+            method: "POST",
+            headers: {
+              "content-type": "application/json",
+            },
+            body: JSON.stringify(currentUser),
+          })
+            .then((res) => res.json())
+            .then((data) =>
+              localStorage.setItem("carpentry_token", data.token)
+            );
           toast.success("Logged In Successfully");
           navigate("/");
         }
@@ -38,6 +51,18 @@ const OtherSignInProvider = () => {
       .then((result) => {
         const user = result.user;
         if (user?.email) {
+          const currentUser = { email: result.user.email };
+          fetch("http://localhost:5000/jwt", {
+            method: "POST",
+            headers: {
+              "content-type": "application/json",
+            },
+            body: JSON.stringify(currentUser),
+          })
+            .then((res) => res.json())
+            .then((data) =>
+              localStorage.setItem("carpentry_token", data.token)
+            );
           toast.success("Logged In Successfully");
           navigate("/");
         }

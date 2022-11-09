@@ -6,7 +6,6 @@ import Loading from "../components/Loading/Loading";
 
 const Main = () => {
   const navigation = useNavigation();
-  console.log(navigation);
   return (
     <div className="font-poppins">
       <Header />

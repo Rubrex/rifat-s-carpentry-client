@@ -12,7 +12,10 @@ const Header = () => {
   // Event handlers
   const handleLogout = () => {
     logOut()
-      .then(() => toast.success("Logged out"))
+      .then(() => {
+        localStorage.removeItem("carpentry_token");
+        toast.success("Logged out");
+      })
       .catch((err) => console.log(err));
   };
 

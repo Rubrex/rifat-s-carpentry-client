@@ -26,7 +26,7 @@ const MyServices = ({ myservices }) => {
           }) => (
             <div
               key={service_id}
-              className="p-5 rounded-md  mx-auto bg-slate-50 flex flex-col justify-between"
+              className="p-5 rounded-md  mx-auto  bg-woodLight/10 shadow flex flex-col justify-between"
             >
               <PhotoProvider>
                 <PhotoView src={service_img}>
