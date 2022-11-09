@@ -1,6 +1,17 @@
 import React, { useEffect, useState } from "react";
 
 const ReviewSection = ({ reviews }) => {
+  const formatDate = (date) => {
+    const newDate = new Date(date);
+    //  const date = new Date();
+    let day = newDate.getDate();
+    let month = newDate.getMonth() + 1;
+    let year = newDate.getFullYear();
+    let clock = newDate.toLocaleTimeString();
+    const finalFormat = `${clock} : ${day}-${month}-${year}`;
+    return finalFormat;
+  };
+
   return (
     <div>
       {/* Reviews Section */}
@@ -43,7 +54,7 @@ const ReviewSection = ({ reviews }) => {
                     alt=""
                     className="h-10 w-10 object-cover rounded-full"
                   />
-                  <span className="mt-1">{reviewer_added}</span>
+                  <span className="mt-1">{formatDate(reviewer_added)}</span>
                 </div>
               </div>
               {/* Review Text */}

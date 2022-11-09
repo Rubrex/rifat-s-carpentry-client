@@ -22,29 +22,22 @@ const ServiceDetails = () => {
   useTitleChange(`${service_title}`);
   // States
   const [reviews, setReviews] = useState([]);
+  console.log(reviews);
   const [refresh, setRefresh] = useState(true);
   //Access Context
   const { user } = useContext(AuthContext);
   // event handler for Feedback
   const handleFeedback = (event) => {
     event.preventDefault();
-    const date = new Date();
-    let day = date.getDate();
-    let month = date.getMonth() + 1;
-    let year = date.getFullYear();
-    let time = date.toLocaleTimeString();
 
     const form = event.target;
-
     const ser_id = service_id;
-    const added = `${time} ${day}/${month}/${year}`;
     const name = user.displayName;
     const profileImage = user.photoURL;
     const email = user.email;
     const ratings = 4;
     const feedback = form.customerReview.value;
     const origin = "Google";
-    console.log(added);
 
     const review = {
       service_id: ser_id,
@@ -56,7 +49,7 @@ const ServiceDetails = () => {
       reviewer_ratings: ratings,
       reviewer_review: feedback,
       reviewer_origin: origin,
-      reviewer_added: added,
+      reviewer_added: Date(),
     };
     fetch("https://rifat-carpenter-server.vercel.app/reviews", {
       method: "POST",
