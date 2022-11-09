@@ -69,13 +69,13 @@ const Header = () => {
           {user?.email && (
             <>
               <NavLink
-                className="hover:text-woodDark  mb-2 md:mb-0 py-1 px-4"
+                className="hover:text-woodDark text-woodLight  md:text-slate-800 mb-2 md:mb-0 py-1 px-4"
                 to="/addservice"
               >
                 Add Service
               </NavLink>
               <NavLink
-                className="hover:text-woodDark  mb-2 md:mb-0 py-1 px-4"
+                className="hover:text-woodDark text-woodLight  md:text-slate-800 mb-2 md:mb-0 py-1 px-4"
                 to="/myreviews"
               >
                 My Reviews

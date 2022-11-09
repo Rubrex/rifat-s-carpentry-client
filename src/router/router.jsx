@@ -56,6 +56,8 @@ const router = createBrowserRouter([
       {
         path: "/blogs",
         element: <Blogs />,
+        loader: async () =>
+          fetch("https://rifat-carpenter-server.vercel.app/blogs"),
       },
       {
         path: "/login",
