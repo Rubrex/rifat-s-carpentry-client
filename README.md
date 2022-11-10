@@ -24,3 +24,6 @@
 - react-hot-toast
 - tailwindcss, postcss
 - react-lottie
+- flowbite-react
+- react-photo-view
+- sweetalert2
