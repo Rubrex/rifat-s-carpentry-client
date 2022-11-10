@@ -25,7 +25,6 @@ const OtherSignInProvider = () => {
         const user = result.user;
         if (user?.email) {
           const currentUser = { email: result.user.email };
-          console.log(currentUser);
           fetch("https://rifat-carpenter-server.vercel.app/jwt", {
             method: "POST",
             headers: {

@@ -24,7 +24,7 @@ const ServiceDetails = () => {
   useTitleChange(`${service_title}`);
   // States
   const [reviews, setReviews] = useState([]);
-  console.log(reviews);
+
   const [refresh, setRefresh] = useState(true);
   //Access Context
   const { user, rating } = useContext(AuthContext);
@@ -81,11 +81,6 @@ const ServiceDetails = () => {
     };
     fetchData();
   }, [service_id, refresh]);
-
-  // Ratings Function
-  const ratingChanged = (newRating) => {
-    console.log(newRating);
-  };
 
   return (
     <section className="container mx-auto my-10">

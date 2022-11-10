@@ -5,7 +5,7 @@ import GiveRatings from "../common/GiveRatings/GiveRatings";
 
 const GiveYourFeedback = ({ service_id, handleFeedback, user }) => {
   const location = useLocation();
-  console.log(location);
+
   return (
     <div className="container mx-auto my-10">
       <form

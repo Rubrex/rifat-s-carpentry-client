@@ -59,7 +59,6 @@ const MyReviews = () => {
           .then((data) => {
             if (data) {
               setRefresh(!refresh);
-              console.log(data);
               Swal.fire("Deleted!", "Your file has been deleted.", "success");
             }
           })

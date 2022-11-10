@@ -16,15 +16,10 @@ const GiveRatings = ({ initialValue, zindex }) => {
       setStarts(ratingGiven);
       setRating(ratingGiven);
     }
-
-    console.log(ratingGiven);
-    console.log(e.target);
   };
 
   let filledStars = stars;
   let emptyStars = 5 - filledStars;
-
-  console.log(filledStars, emptyStars);
 
   let filled = Array(filledStars).fill(
     <AiFillStar
@@ -38,7 +33,6 @@ const GiveRatings = ({ initialValue, zindex }) => {
   );
 
   let totalStars = [...filled, ...empty];
-  console.log(totalStars);
 
   return (
     <div className="flex items-center" onClickCapture={handleClickCapture}>
