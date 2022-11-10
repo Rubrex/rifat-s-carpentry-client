@@ -35,7 +35,6 @@ const AddService = () => {
       service_price,
       service_description,
     };
-    console.log(addService);
     // Send new Service to the database
     fetch("https://rifat-carpenter-server.vercel.app/services", {
       method: "POST",
