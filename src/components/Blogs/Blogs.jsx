@@ -8,7 +8,10 @@ const Blogs = () => {
     <div className="my-10 container mx-auto">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
         {blogsData.map((blog) => (
-          <div className="relative bg-woodLight/40 shadow rounded-md mt-24 lg:mt-36 mx-5">
+          <div
+            key={blog._id}
+            className="relative bg-woodLight/40 shadow rounded-md mt-24 lg:mt-36 mx-5"
+          >
             <div className=" flex justify-center">
               <img
                 src={blog.blog_image}

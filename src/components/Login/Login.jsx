@@ -14,7 +14,7 @@ const Login = () => {
   const location = useLocation();
   // variables
   const from = location.state?.from?.pathname || "/";
-  console.log(from);
+
   // Access Context
   const { logIn } = useContext(AuthContext);
   // Event Handlers

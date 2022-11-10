@@ -6,7 +6,7 @@ import {
 import React, { useContext } from "react";
 import toast from "react-hot-toast";
 import { FaGoogle, FaGithub } from "react-icons/fa";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../contexts/AuthProvider";
 
 const OtherSignInProvider = () => {
@@ -15,6 +15,9 @@ const OtherSignInProvider = () => {
 
   const { loginProvider } = useContext(AuthContext);
   const navigate = useNavigate();
+  const location = useLocation();
+  // variables
+  const from = location.state?.from?.pathname || "/";
 
   const handleGoogleSignIn = () => {
     loginProvider(googleProvider)
@@ -35,7 +38,7 @@ const OtherSignInProvider = () => {
               localStorage.setItem("carpentry_token", data.token)
             );
           toast.success("Logged In Successfully");
-          navigate("/");
+          navigate(from, { replace: true });
         }
       })
       .catch((error) => {

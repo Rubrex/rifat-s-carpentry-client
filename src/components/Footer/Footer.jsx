@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import footerBackgroundImg from "../../assets/images/footerImageBg.jpg";
 import logo from "../../assets/logo/logo.png";
 
@@ -36,6 +37,12 @@ const Footer = () => {
               <h2 className="text-lg font-medium border-b-2 border-woodDark inline pb-1">
                 My Services
               </h2>
+              <br />
+              <ul className="mt-5">
+                <li>
+                  <Link to="/services">List of services</Link>
+                </li>
+              </ul>
             </div>
             <div className="justify-self-end">
               <h2 className="text-lg font-medium border-b-2 border-woodDark inline pb-1 text-right">

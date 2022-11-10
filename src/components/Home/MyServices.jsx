@@ -10,7 +10,7 @@ const MyServices = ({ myservices }) => {
   };
 
   return (
-    <section className="container mx-auto mt-10">
+    <section className="container mx-auto my-10">
       <h2 className="text-center py-10 text-2xl font-bold text-woodDark">
         MY SERVICES
       </h2>
@@ -44,16 +44,26 @@ const MyServices = ({ myservices }) => {
                   <span>Rating: {service_rating}</span>
                 </div>
                 <p>{shortenDescription(service_description)}</p>
-                <Link
-                  to={`/services/${service_id}`}
-                  className="border border-woodLight py-2 px-4 text-woodLight hover:bg-woodDark hover:text-white rounded-md text-center"
-                >
-                  Details
-                </Link>
+                <div className="mx-auto">
+                  <Link
+                    to={`/services/${service_id}`}
+                    className="border border-woodLight py-2 px-4 text-woodLight hover:bg-woodDark hover:text-white rounded-md text-center"
+                  >
+                    Details
+                  </Link>
+                </div>
               </div>
             </div>
           )
         )}
+      </div>
+      <div className="my-10 text-center">
+        <Link
+          to="/services"
+          className=" border border-woodLight py-2 px-4 text-woodLight hover:bg-woodDark hover:text-white rounded-md "
+        >
+          See All
+        </Link>
       </div>
     </section>
   );
