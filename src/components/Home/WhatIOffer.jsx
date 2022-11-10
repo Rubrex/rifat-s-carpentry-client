@@ -15,7 +15,7 @@ const WhatIOffer = () => {
         </p>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-3 max-w-4xl mx-auto">
-        <div className="flex justify-center items-center flex-col p-10 text-center h-[298px] bg-woodLight">
+        <div className="flex justify-center items-center flex-col p-10 text-center h-[298px] bg-woodLight/60 hover:scale-105 transition-all">
           <h2 className="text-2xl font-medium">Common Repairs</h2>
           <p>
             You house doors, ceiling, window needs maintenance and repairs over
@@ -26,10 +26,10 @@ const WhatIOffer = () => {
           <img
             src={manDesigning}
             alt=""
-            className="w-full h-[298px] object-cover"
+            className="w-full h-[298px] object-cover hover:scale-105 transition-all"
           />
         </div>
-        <div className="flex justify-center items-center flex-col p-10 text-center h-[298px] bg-slate-200">
+        <div className="flex justify-center items-center flex-col p-10 text-center h-[298px] bg-slate-200/60 hover:scale-105 transition-all">
           <h2 className="text-2xl font-medium">Custom Design</h2>
           <p>If you have a design in mind, I'll be there to make it for you.</p>
         </div>
@@ -37,10 +37,10 @@ const WhatIOffer = () => {
           <img
             src={manReparing}
             alt=""
-            className="w-full h-[298px] object-cover"
+            className="w-full h-[298px] object-cover hover:scale-105 transition-all"
           />
         </div>
-        <div className="flex justify-center items-center flex-col p-10 text-center h-[298px] bg-amber-600">
+        <div className="flex justify-center items-center flex-col p-10 text-center h-[298px] bg-amber-600/60 hover:scale-105 transition-all">
           <h2 className="text-2xl font-medium">Installation</h2>
           <p>
             Need door, window, or any household furnitures installations I'll
@@ -51,7 +51,7 @@ const WhatIOffer = () => {
           <img
             src={manInstalling}
             alt=""
-            className="w-full h-[298px] object-cover"
+            className="w-full h-[298px] object-cover hover:scale-105 transition-all"
           />
         </div>
       </div>
