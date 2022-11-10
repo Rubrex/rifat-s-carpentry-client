@@ -1,4 +1,6 @@
+import { RatingStar } from "flowbite-react/lib/esm/components/Rating/RatingStar";
 import React, { useEffect, useState } from "react";
+import RatingsStar from "../common/RatingsStar/RatingsStar";
 
 const ReviewSection = ({ reviews }) => {
   const formatDate = (date) => {
@@ -29,7 +31,7 @@ const ReviewSection = ({ reviews }) => {
           }) => (
             <div key={_id} className="bg-slate-50 border p-6">
               {/* User image + Origin */}
-              <div className="flex items-center justify-between   ">
+              <div className="flex items-start justify-between   ">
                 <div>
                   <div className="flex items-center gap-5 ">
                     <img
@@ -39,7 +41,9 @@ const ReviewSection = ({ reviews }) => {
                     />
                     <div className=" flex flex-col justify-between gap-2">
                       <span>{reviewer_name}</span>
-                      <div>Ratings: {reviewer_ratings}</div>
+                      <div>
+                        <RatingsStar stars={reviewer_ratings}></RatingsStar>
+                      </div>
                     </div>
                   </div>
                   <div className="mt-2">
@@ -49,11 +53,6 @@ const ReviewSection = ({ reviews }) => {
                   </div>
                 </div>
                 <div className="flex flex-col items-end">
-                  <img
-                    src={reviewer_img}
-                    alt=""
-                    className="h-10 w-10 object-cover rounded-full"
-                  />
                   <span className="mt-1">{formatDate(reviewer_added)}</span>
                 </div>
               </div>

@@ -7,6 +7,8 @@ import { AuthContext } from "../../contexts/AuthProvider";
 import GiveYourFeedback from "./GiveYourFeedback";
 import ReviewSection from "./ReviewSection";
 import useTitleChange from "../../hooks/useTitleChange";
+import { AiFillStar, AiOutlineStar } from "react-icons/ai";
+import RatingsStar from "../common/RatingsStar/RatingsStar";
 
 const ServiceDetails = () => {
   // Loader Data
@@ -25,7 +27,7 @@ const ServiceDetails = () => {
   console.log(reviews);
   const [refresh, setRefresh] = useState(true);
   //Access Context
-  const { user } = useContext(AuthContext);
+  const { user, rating } = useContext(AuthContext);
   // event handler for Feedback
   const handleFeedback = (event) => {
     event.preventDefault();
@@ -35,7 +37,7 @@ const ServiceDetails = () => {
     const name = user.displayName;
     const profileImage = user.photoURL;
     const email = user.email;
-    const ratings = 4;
+    const ratings = rating;
     const feedback = form.customerReview.value;
     const origin = "Google";
 
@@ -80,6 +82,11 @@ const ServiceDetails = () => {
     fetchData();
   }, [service_id, refresh]);
 
+  // Ratings Function
+  const ratingChanged = (newRating) => {
+    console.log(newRating);
+  };
+
   return (
     <section className="container mx-auto my-10">
       <main className="px-5 md:px-0">
@@ -98,7 +105,10 @@ const ServiceDetails = () => {
             </h2>
             {/* Ratings with stars */}
             <div className="flex items-start gap-16 ">
-              <div>Ratings: {service_rating}</div>
+              <div>
+                <RatingsStar stars={service_rating}></RatingsStar>
+              </div>
+
               <span>Price: ${service_price}</span>
             </div>
             {/* full desc */}

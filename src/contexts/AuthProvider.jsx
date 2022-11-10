@@ -17,6 +17,7 @@ const AuthProvider = ({ children }) => {
   // States
   const [loading, setLoading] = useState(true);
   const [user, setUser] = useState({});
+  const [rating, setRating] = useState(0);
 
   // Create User
   const createUser = (email, password) => {
@@ -66,6 +67,8 @@ const AuthProvider = ({ children }) => {
     user,
     loginProvider,
     loading,
+    rating,
+    setRating,
   };
   return (
     <AuthContext.Provider value={contextData}>{children}</AuthContext.Provider>

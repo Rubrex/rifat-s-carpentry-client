@@ -7,6 +7,8 @@ import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 import useTitleChange from "../../hooks/useTitleChange";
 import Loading from "../Loading/Loading";
 import Swal from "sweetalert2";
+import RatingsStar from "../common/RatingsStar/RatingsStar";
+import GiveRatings from "../common/GiveRatings/GiveRatings";
 
 const MyReviews = () => {
   useTitleChange("My Reviews");
@@ -18,7 +20,7 @@ const MyReviews = () => {
   const [isLoading, setLoading] = useState(true);
 
   // Access Context
-  const { user } = useContext(AuthContext);
+  const { user, rating } = useContext(AuthContext);
 
   // Load My reviews from db using query
   useEffect(() => {
@@ -77,7 +79,7 @@ const MyReviews = () => {
   // HandleUpdateReview on Modal and update on Mongodb
   const handleUpdateReview = (event) => {
     event.preventDefault();
-    const ratings = 4; // needs change
+    const ratings = rating;
     const review_desc = event.target.customerReview.value;
 
     const updateDoc = { ratings, review_desc };
@@ -130,7 +132,9 @@ const MyReviews = () => {
                       <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
                         {review.service_name}
                       </Table.Cell>
-                      <Table.Cell>{review.reviewer_ratings}</Table.Cell>
+                      <Table.Cell>
+                        <RatingsStar stars={review.reviewer_ratings} />
+                      </Table.Cell>
                       <Table.Cell>{review.reviewer_review}</Table.Cell>
                       <Table.Cell>{review.service_price}</Table.Cell>
                       <Table.Cell>
@@ -176,23 +180,27 @@ const MyReviews = () => {
             className="grid grid-cols-1 md:grid-cols-6 gap-4"
           >
             {/* Profile Image */}
-            <div className="self-center md:col-span-2">
+            <div className="self-center md:col-span-2 mx-auto md:mx-0">
               <img
                 src={user?.photoURL}
                 className="w-32 h-32 object-cover rounded-full"
                 alt=""
               />
+              {/* Stars */}
+              <div className="mt-5">
+                <GiveRatings
+                  initialValue={
+                    selectedReview.reviewer_ratings
+                      ? selectedReview.reviewer_ratings
+                      : 0
+                  }
+                  zindex={50}
+                />
+                <h2>Hellooo</h2>
+              </div>
             </div>
             {/* Edit ratings & Review */}
             <div className="flex flex-col gap-3 md:col-span-4">
-              {/* Stars */}
-              <div className="flex items-center justify-between w-full">
-                <AiFillStar className="text-3xl text-woodLight cursor-pointer hover:text-woodDark" />
-                <AiFillStar className="text-3xl text-woodLight cursor-pointer hover:text-woodDark" />
-                <AiFillStar className="text-3xl text-woodLight cursor-pointer hover:text-woodDark" />
-                <AiFillStar className="text-3xl text-woodLight cursor-pointer hover:text-woodDark" />
-                <AiOutlineStar className="text-3xl" />
-              </div>
               {/* Feedback Field */}
               <div className="flex flex-col">
                 <label htmlFor="customerReview" className="text-sm mb-2">
