@@ -1,10 +1,26 @@
-Project: Rifat's Carpentry
+## Rifat's Carpentry
 
-Live Link: https://github.com/
+## Live Link: https://rifatcarpenter.web.app/
 
-Features and Functionalities:
+## Features and Functionalities:
 
-1.  User able to create account via email, google signin
-2.  User can add reviews to particular service category after login only
-3.  User can create new service if they want
-4.  User can manage their previously added comments
+- User able to create account via email, google signin
+- User can add reviews to particular service category after login only
+- User can create new service if they want
+- User can manage their previously added reviews
+
+### Technologies used
+
+- HTML
+- CSS
+- JavaScript
+- React (UI Library) [Vite]
+
+### Packages used
+
+- react-router-dom
+- firebase
+- react-icons
+- react-hot-toast
+- tailwindcss, postcss
+- react-lottie
