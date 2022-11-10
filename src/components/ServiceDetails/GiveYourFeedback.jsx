@@ -52,7 +52,7 @@ const GiveYourFeedback = ({ service_id, handleFeedback, user }) => {
           <div className="flex flex-col justify-between ml-5">
             <p className="text-sm text-slate-500">{user?.displayName}</p>
             <div>
-              <GiveRatings initialValue={0} zindex={0} />
+              <GiveRatings initialValue={0} />
             </div>
             {/* <div className="flex items-center justify-between w-full">
               <AiFillStar className="text-3xl text-woodLight cursor-pointer hover:text-woodDark" />

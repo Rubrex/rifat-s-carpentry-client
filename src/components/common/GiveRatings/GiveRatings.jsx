@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 import { AuthContext } from "../../../contexts/AuthProvider";
 
-const GiveRatings = ({ initialValue, zindex }) => {
+const GiveRatings = ({ initialValue }) => {
   const { setRating } = useContext(AuthContext);
   const initStars = parseInt(initialValue);
 
@@ -23,12 +23,12 @@ const GiveRatings = ({ initialValue, zindex }) => {
 
   let filled = Array(filledStars).fill(
     <AiFillStar
-      className={`text-woodLight cursor-pointer hover:text-woodDark text-3xl  absolute  -z-[${zindex}px] pointer-events-none`}
+      className={`text-woodLight cursor-pointer hover:text-woodDark text-3xl pointer-events-none`}
     />
   );
   let empty = Array(emptyStars).fill(
     <AiOutlineStar
-      className={`text-woodLight cursor-pointer hover:text-woodDark text-3xl absolute  -z-[${zindex}px] pointer-events-none`}
+      className={`text-woodLight cursor-pointer hover:text-woodDark text-3xl pointer-events-none`}
     />
   );
 
@@ -41,9 +41,7 @@ const GiveRatings = ({ initialValue, zindex }) => {
           <span
             key={index}
             data-index={++index}
-            className={`w-[30px] h-[30px] relative cursor-pointer z-[${
-              zindex + 10
-            }px]`}
+            className={`w-[30px] h-[30px]  cursor-pointer `}
           >
             {elem}
           </span>

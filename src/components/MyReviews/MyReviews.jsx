@@ -193,9 +193,7 @@ const MyReviews = () => {
                       ? selectedReview.reviewer_ratings
                       : 0
                   }
-                  zindex={50}
                 />
-                <h2>Hellooo</h2>
               </div>
             </div>
             {/* Edit ratings & Review */}
