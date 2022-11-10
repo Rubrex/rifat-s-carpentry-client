@@ -14,7 +14,7 @@ const Services = () => {
   };
 
   return (
-    <section className="container mx-auto mt-10">
+    <section className="container mx-auto mt-10 mb-24">
       <h2 className="text-center py-10 text-2xl font-bold text-woodDark">
         MY SERVICES
       </h2>

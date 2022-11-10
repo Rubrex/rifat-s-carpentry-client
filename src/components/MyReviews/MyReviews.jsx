@@ -103,7 +103,7 @@ const MyReviews = () => {
   };
 
   return (
-    <div className="container mx-auto my-10">
+    <div className="container mx-auto mt-10 mb-20">
       {/* Reviews Table */}
       {/* Check if theres any reviews available */}
       {isLoading ? (

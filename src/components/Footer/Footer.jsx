@@ -1,10 +1,17 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import footerBackgroundImg from "../../assets/images/footerImageBg.jpg";
+import {
+  FaFacebookSquare,
+  FaInstagramSquare,
+  FaLinkedin,
+  FaTwitterSquare,
+  FaYoutubeSquare,
+} from "react-icons/fa";
 import logo from "../../assets/logo/logo.png";
 
 const footerOverlay = {
-  backgroundImage: `linear-gradient(0deg, rgba(135,100,69,0.7) 0%, rgba(255,255,255,1)100%),url(${footerBackgroundImg})`,
+  backgroundImage: `linear-gradient(0deg, rgba(47, 30, 10, 0.3) 0%, rgba(255,255,255,1)100%),url(${footerBackgroundImg})`,
   backgroundSize: "cover",
   backgroundRepeat: "no-repeat",
 };
@@ -33,7 +40,7 @@ const Footer = () => {
           </div>
           {/* Links */}
           <div className="grid grid-cols-2">
-            <div>
+            <div className="justify-self-center">
               <h2 className="text-lg font-medium border-b-2 border-woodDark inline pb-1">
                 My Services
               </h2>
@@ -48,12 +55,31 @@ const Footer = () => {
               <h2 className="text-lg font-medium border-b-2 border-woodDark inline pb-1 text-right">
                 Follow Me
               </h2>
+              <div className="mt-5">
+                <ul className="flex gap-2">
+                  <li>
+                    <FaFacebookSquare className="text-4xl cursor-pointer hover:text-woodDark" />
+                  </li>
+                  <li>
+                    <FaInstagramSquare className="text-4xl cursor-pointer hover:text-woodDark" />
+                  </li>
+                  <li>
+                    <FaLinkedin className="text-4xl cursor-pointer hover:text-woodDark" />
+                  </li>
+                  <li>
+                    <FaTwitterSquare className="text-4xl cursor-pointer hover:text-woodDark" />
+                  </li>
+                  <li>
+                    <FaYoutubeSquare className="text-4xl cursor-pointer hover:text-woodDark" />
+                  </li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>
         <hr className="mt-10" />
         {/* Copyright */}
-        <div className="py-10 text-center">
+        <div className="py-2 text-center text-sm">
           <p>© 2021-2022 rifat's carpentry. All rights reserved</p>
         </div>
       </div>

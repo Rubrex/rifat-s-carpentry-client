@@ -33,17 +33,27 @@ const Register = () => {
   };
 
   return (
-    <div className="container mx-auto my-10">
-      <div className="grid grid-cols-1 md:grid-cols-2 items-center">
+    <div className="container mx-auto my-10 mb-24">
+      <div className="grid grid-cols-1 md:grid-cols-2 items-center max-w-4xl mx-auto  border-slate-300 border overflow-hidden rounded-lg">
         {/* Left Image */}
-        <div className="order-2 md:order-1">
-          <img src={loginBannerImg} alt="" className="w-1/2 mx-auto" />
+        <div className="w-full h-full relative">
+          <div className="absolute w-full h-full bg-white/50  flex justify-center items-center flex-col">
+            <img src={loginBannerImg} className="w-2/3 mx-auto" alt="" />
+            <h1 className="text-5xl font-extrabold text-white text-center">
+              Register
+            </h1>
+          </div>
+          <img
+            src="https://images.pexels.com/photos/5089152/pexels-photo-5089152.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+            alt=""
+            className=" mx-auto order-2 md:order-1 object-cover w-full h-full z-10"
+          />
         </div>
         {/* Right Form */}
         <div className="mb-10 md:mb-0 order-1 md:order-2">
           <form
             onSubmit={handleRegistration}
-            className="flex flex-col gap-4 max-w-[500px] p-14 border-slate-300 border mx-auto rounded-md"
+            className="flex flex-col gap-4 max-w-[500px] p-14  mx-auto rounded-md"
           >
             {/* Name */}
             <div>

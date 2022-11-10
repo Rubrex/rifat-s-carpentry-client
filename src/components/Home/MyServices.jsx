@@ -44,10 +44,10 @@ const MyServices = ({ myservices }) => {
                   <span>Rating: {service_rating}</span>
                 </div>
                 <p>{shortenDescription(service_description)}</p>
-                <div className="mx-auto">
+                <div className="mx-auto w-full">
                   <Link
                     to={`/services/${service_id}`}
-                    className="border border-woodLight py-2 px-4 text-woodLight hover:bg-woodDark hover:text-white rounded-md text-center"
+                    className="block border border-woodLight py-2 px-4 text-woodLight hover:bg-woodDark hover:text-white rounded-md text-center"
                   >
                     Details
                   </Link>
@@ -57,10 +57,10 @@ const MyServices = ({ myservices }) => {
           )
         )}
       </div>
-      <div className="my-10 text-center">
+      <div className="my-10 mb-24 text-center">
         <Link
           to="/services"
-          className=" border border-woodLight py-2 px-4 text-woodLight hover:bg-woodDark hover:text-white rounded-md "
+          className=" border bg-woodLight border-woodLight py-2 px-4 text-white hover:bg-woodDark hover:text-white rounded-md "
         >
           See All
         </Link>

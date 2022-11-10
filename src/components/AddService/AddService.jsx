@@ -53,7 +53,7 @@ const AddService = () => {
   };
 
   return (
-    <div>
+    <div className="mt-10 mb-20">
       <form
         onSubmit={handleAddService}
         className="flex flex-col gap-4 max-w-[500px] p-14 border-slate-300 border mx-auto rounded-md"

@@ -5,7 +5,7 @@ const Blogs = () => {
   useTitleChange("Blogs");
   const blogsData = useLoaderData();
   return (
-    <div className="my-10 container mx-auto">
+    <div className="my-10 container mx-auto mb-20">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
         {blogsData.map((blog) => (
           <div
