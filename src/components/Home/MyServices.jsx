@@ -11,7 +11,7 @@ const MyServices = ({ myservices }) => {
 
   return (
     <section className="container mx-auto my-10">
-      <h2 className="text-center py-10 text-2xl font-bold text-woodDark">
+      <h2 className="text-center py-10 text-4xl font-bold text-woodDark">
         MY SERVICES
       </h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">

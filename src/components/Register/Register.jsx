@@ -90,7 +90,7 @@ const Register = () => {
                 id="email1"
                 type="email"
                 name="email"
-                placeholder="email@example.com"
+                placeholder="name@mailme.com"
                 required={true}
               />
             </div>

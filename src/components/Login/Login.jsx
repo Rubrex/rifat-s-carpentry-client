@@ -80,7 +80,7 @@ const Login = () => {
                 id="email1"
                 type="email"
                 name="email"
-                placeholder="name@flowbite.com"
+                placeholder="name@mailme.com"
                 required={true}
               />
             </div>

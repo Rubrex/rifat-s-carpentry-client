@@ -39,8 +39,8 @@ const Footer = () => {
             </p>
           </div>
           {/* Links */}
-          <div className="grid grid-cols-2">
-            <div className="justify-self-center">
+          <div className="grid md:grid-cols-2">
+            <div className="md:justify-self-center">
               <h2 className="text-lg font-medium border-b-2 border-woodDark inline pb-1">
                 My Services
               </h2>
@@ -51,7 +51,7 @@ const Footer = () => {
                 </li>
               </ul>
             </div>
-            <div className="justify-self-end">
+            <div className="md:justify-self-end mt-5 md:mt-0">
               <h2 className="text-lg font-medium border-b-2 border-woodDark inline pb-1 text-right">
                 Follow Me
               </h2>
