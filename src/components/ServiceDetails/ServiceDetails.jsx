@@ -9,6 +9,7 @@ import ReviewSection from "./ReviewSection";
 import useTitleChange from "../../hooks/useTitleChange";
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 import RatingsStar from "../common/RatingsStar/RatingsStar";
+import ScrollToTop from "../common/ScrollToTop/ScrollToTop";
 
 const ServiceDetails = () => {
   // Loader Data
@@ -84,6 +85,7 @@ const ServiceDetails = () => {
 
   return (
     <section className="container mx-auto my-10">
+      <ScrollToTop />
       <main className="px-5 md:px-0">
         {/* Service and Informations */}
         <div className="grid grid-cols-1 md:grid-cols-2 max-w-5xl mx-auto gap-5 lg:gap-10">

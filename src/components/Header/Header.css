@@ -1,4 +1,10 @@
 .active {
+  color: #876445 !important;
+}
+.navItem {
+  border: 2px solid transparent;
+  transition: all ease 300ms;
+}
+.navItem:hover {
   border: 2px solid #876445;
-  padding: 4px 16px;
 }

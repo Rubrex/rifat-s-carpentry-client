@@ -15,7 +15,10 @@ const GiveYourFeedback = ({ service_id, handleFeedback, user }) => {
         {/* Login / Register first */}
 
         {!user?.email && (
-          <div className="absolute top-0 left-0 w-full h-full bg-white/5 backdrop-blur flex items-center justify-center">
+          <div className="absolute top-0 left-0 w-full h-full bg-white/5 backdrop-blur flex flex-col items-center justify-center">
+            <h1 className="text-2xl text-woodDark mb-8 font-bold">
+              Please Login to write review
+            </h1>
             <div className="flex  border-2  border-woodDark">
               <Link
                 className="bg-woodDark hover:bg-woodLight text-white px-6 py-2"
@@ -54,13 +57,6 @@ const GiveYourFeedback = ({ service_id, handleFeedback, user }) => {
             <div>
               <GiveRatings initialValue={0} />
             </div>
-            {/* <div className="flex items-center justify-between w-full">
-              <AiFillStar className="text-3xl text-woodLight cursor-pointer hover:text-woodDark" />
-              <AiFillStar className="text-3xl text-woodLight cursor-pointer hover:text-woodDark" />
-              <AiFillStar className="text-3xl text-woodLight cursor-pointer hover:text-woodDark" />
-              <AiFillStar className="text-3xl text-woodLight cursor-pointer hover:text-woodDark" />
-              <AiOutlineStar className="text-3xl" />
-            </div> */}
           </div>
         </div>
         {/* Feedback Field */}

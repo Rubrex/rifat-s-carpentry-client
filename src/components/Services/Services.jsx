@@ -1,8 +1,11 @@
+import { RatingStar } from "flowbite-react/lib/esm/components/Rating/RatingStar";
 import React from "react";
 import { PhotoProvider, PhotoView } from "react-photo-view";
 import "react-photo-view/dist/react-photo-view.css";
 import { Link, useLoaderData } from "react-router-dom";
 import useTitleChange from "../../hooks/useTitleChange";
+import RatingsStar from "../common/RatingsStar/RatingsStar";
+import ScrollToTop from "../common/ScrollToTop/ScrollToTop";
 
 const Services = () => {
   const myservices = useLoaderData();
@@ -15,6 +18,7 @@ const Services = () => {
 
   return (
     <section className="container mx-auto mt-10 mb-24">
+      <ScrollToTop />
       <h2 className="text-center py-10 text-2xl font-bold text-woodDark">
         MY SERVICES
       </h2>
@@ -45,7 +49,9 @@ const Services = () => {
                 <p className="text-xl font-medium">{service_title}</p>
                 <div className="flex items-center justify-between">
                   <p>Price: ${service_price}</p>
-                  <span>Rating: {service_rating}</span>
+                  <span>
+                    <RatingsStar stars={service_rating} />
+                  </span>
                 </div>
                 <p>{shortenDescription(service_description)}</p>
                 <Link

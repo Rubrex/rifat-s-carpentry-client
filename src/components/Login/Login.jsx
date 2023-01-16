@@ -6,6 +6,7 @@ import toast from "react-hot-toast";
 import { AuthContext } from "../../contexts/AuthProvider";
 import OtherSignInProvider from "../common/OtherSignInProvider/OtherSignInProvider";
 import useTitleChange from "../../hooks/useTitleChange";
+import ScrollToTop from "../common/ScrollToTop/ScrollToTop";
 
 const Login = () => {
   useTitleChange("Login");
@@ -50,6 +51,7 @@ const Login = () => {
 
   return (
     <div className="container mx-auto my-10 mb-24">
+      <ScrollToTop />
       <div className="grid grid-cols-1 md:grid-cols-2 items-center max-w-4xl mx-auto  border-slate-300 border overflow-hidden rounded-lg">
         {/* Left Image */}
         <div className="w-full h-full relative">
@@ -80,7 +82,8 @@ const Login = () => {
                 id="email1"
                 type="email"
                 name="email"
-                placeholder="name@mailme.com"
+                defaultValue="nikita41@gmail.com"
+                placeholder="name@example.com"
                 required={true}
               />
             </div>
@@ -92,6 +95,7 @@ const Login = () => {
                 id="password1"
                 name="password"
                 type="password"
+                defaultValue="123456"
                 required={true}
               />
             </div>

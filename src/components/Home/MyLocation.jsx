@@ -9,23 +9,23 @@ import "./MyLocation.css";
 const MyLocation = () => {
   const position = [23.783869481071843, 90.42607841790681];
   return (
-    <div className="min-h-min bg-slate-800 text-white">
+    <div className="min-h-min bg-woodDark text-white">
       <div className="grid grid-cols-1  md:grid-cols-11 ">
         {/* Text Section */}
         <div className="md:col-span-4 flex flex-col justify-center items-center p-10">
           <h2 className="text-3xl font-bold mb-10">Contact Info</h2>
           <div className="flex flex-col md:text-lg gap-2">
             <div className="flex items-center gap-2">
-              <ImLocation />
+              <ImLocation className="text-xl" />
               <p>Road 105, North Badda, Dhaka - 1212</p>
             </div>
             <div className="flex items-center gap-2">
-              <BiPhoneCall />
-              <p>+88019-80728221</p>
+              <BiPhoneCall className="text-xl" />
+              <p>(+880) 1980-728221</p>
             </div>
             <div className="flex items-center gap-2">
-              <GrMail />
-              <p>rubrex96@hotmail.com</p>
+              <GrMail className="text-xl" />
+              <p>rubel.hossain0649@gmail.com</p>
             </div>
           </div>
         </div>

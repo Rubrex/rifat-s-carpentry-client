@@ -2,6 +2,7 @@ import React from "react";
 import { PhotoProvider, PhotoView } from "react-photo-view";
 import "react-photo-view/dist/react-photo-view.css";
 import { Link } from "react-router-dom";
+import RatingsStar from "../common/RatingsStar/RatingsStar";
 
 const MyServices = ({ myservices }) => {
   const shortenDescription = (desc) => {
@@ -41,7 +42,10 @@ const MyServices = ({ myservices }) => {
                 <p className="text-xl font-medium">{service_title}</p>
                 <div className="flex items-center justify-between">
                   <p>Price: ${service_price}</p>
-                  <span>Rating: {service_rating}</span>
+                  <span>
+                    {" "}
+                    <RatingsStar stars={service_rating} />
+                  </span>
                 </div>
                 <p>{shortenDescription(service_description)}</p>
                 <div className="mx-auto w-full">

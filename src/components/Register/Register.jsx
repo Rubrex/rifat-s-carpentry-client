@@ -7,6 +7,7 @@ import { AuthContext } from "../../contexts/AuthProvider";
 import toast from "react-hot-toast";
 import OtherSignInProvider from "../common/OtherSignInProvider/OtherSignInProvider";
 import useTitleChange from "../../hooks/useTitleChange";
+import ScrollToTop from "../common/ScrollToTop/ScrollToTop";
 const Register = () => {
   useTitleChange("Register");
   // Access Context
@@ -34,6 +35,7 @@ const Register = () => {
 
   return (
     <div className="container mx-auto my-10 mb-24">
+      <ScrollToTop />
       <div className="grid grid-cols-1 md:grid-cols-2 items-center max-w-4xl mx-auto  border-slate-300 border overflow-hidden rounded-lg">
         {/* Left Image */}
         <div className="w-full h-full relative">

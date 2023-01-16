@@ -20,7 +20,7 @@ const Header = () => {
   };
 
   return (
-    <div className="sticky top-0 z-50 bg-white">
+    <div className="sticky top-0 z-[801] bg-white">
       <div className="container mx-auto ">
         <Navbar fluid={true} rounded={true}>
           <Link to="/" className="flex items-center">
@@ -29,7 +29,7 @@ const Header = () => {
           <div className="flex md:order-2">
             {/* className="bg-red border border-orange-500 text-orange-500 hover:bg-orange-100 " */}
 
-            <div className="border-2 border-woodDark flex">
+            <div className=" flex">
               {user?.email ? (
                 <button
                   onClick={handleLogout}
@@ -40,18 +40,18 @@ const Header = () => {
                 </button>
               ) : (
                 <>
-                  <NavLink
-                    className="bg-woodDark  border-2 border-transparent hover:bg-woodLight text-white py-1 px-4"
+                  <Link
+                    className="bg-woodDark  hover:bg-woodLight text-white grid place-items-center px-3 py-2"
                     to="/register"
                   >
                     Register
-                  </NavLink>
-                  <NavLink
-                    className=" hover:bg-woodLight border-2 border-transparent   text-woodDark py-1 px-4"
+                  </Link>
+                  <Link
+                    className=" bg-woodDark/20 hover:bg-woodLight text-woodDark  grid place-items-center px-3 py-2"
                     to="/login"
                   >
                     Login
-                  </NavLink>
+                  </Link>
                 </>
               )}
             </div>
@@ -59,13 +59,13 @@ const Header = () => {
           </div>
           <Navbar.Collapse className="bg-slate-200 md:bg-white p-5 md:p-0 ">
             <NavLink
-              className="hover:text-woodDark text-woodLight  md:text-slate-800 mb-2 md:mb-0 py-1 px-4"
+              className="navItem hover:text-woodDark text-woodLight  md:text-slate-800 mb-2 md:mb-0 py-1 px-4"
               to="/services"
             >
               Services
             </NavLink>
             <NavLink
-              className="hover:text-woodDark text-woodLight  md:text-slate-800 mb-2 md:mb-0 py-1 px-4"
+              className="navItem hover:text-woodDark text-woodLight  md:text-slate-800 mb-2 md:mb-0 py-1 px-4"
               to="/blogs"
             >
               Blogs
@@ -73,13 +73,13 @@ const Header = () => {
             {user?.email && (
               <>
                 <NavLink
-                  className="hover:text-woodDark text-woodLight  md:text-slate-800 mb-2 md:mb-0 py-1 px-4"
+                  className="navItem hover:text-woodDark text-woodLight  md:text-slate-800 mb-2 md:mb-0 py-1 px-4"
                   to="/addservice"
                 >
                   Add Service
                 </NavLink>
                 <NavLink
-                  className="hover:text-woodDark text-woodLight  md:text-slate-800 mb-2 md:mb-0 py-1 px-4"
+                  className="navItem hover:text-woodDark text-woodLight  md:text-slate-800 mb-2 md:mb-0 py-1 px-4"
                   to="/myreviews"
                 >
                   My Reviews
