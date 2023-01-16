@@ -2,16 +2,20 @@ import React, { useContext } from "react";
 import { Button, Label, TextInput } from "flowbite-react";
 import loginBannerImg from "../../assets/logo/logo.png";
 import { FaFacebook, FaGoogle, FaGithub } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthProvider";
 import toast from "react-hot-toast";
 import OtherSignInProvider from "../common/OtherSignInProvider/OtherSignInProvider";
 import useTitleChange from "../../hooks/useTitleChange";
 import ScrollToTop from "../common/ScrollToTop/ScrollToTop";
 const Register = () => {
+  // Hooks
   useTitleChange("Register");
+  const navigate = useNavigate();
+  // variables
+  const from = location.state?.from?.pathname || "/";
   // Access Context
-  const { createUser, updateUser } = useContext(AuthContext);
+  const { createUser, updateUser, user, setLoading } = useContext(AuthContext);
   // Event Handlers
   const handleRegistration = (event) => {
     event.preventDefault();
@@ -26,12 +30,33 @@ const Register = () => {
         if (res.user?.email) {
           const profile = { displayName: name, photoURL: profileImg };
           updateUser(profile);
-          toast.success("Account created successfully");
-          navigate("/");
+
+          // Create JWT Token and save it on local storage
+          const currentUser = { email: res.user.email };
+          fetch("https://rifat-carpenter-server.vercel.app/jwt", {
+            method: "POST",
+            headers: {
+              "content-type": "application/json",
+            },
+            body: JSON.stringify(currentUser),
+          })
+            .then((res) => res.json())
+            .then((data) => {
+              // Change loading state from AuthContext
+              setLoading(false);
+              localStorage.setItem("carpentry_token", data.token);
+              navigate(from, { replace: true });
+              toast.success("Registered Successfully");
+            })
+            .catch((err) => console.log(err));
         }
       })
       .catch((err) => console.log(err));
   };
+
+  if (user?.email) {
+    navigate("/");
+  }
 
   return (
     <div className="container mx-auto my-10 mb-24">

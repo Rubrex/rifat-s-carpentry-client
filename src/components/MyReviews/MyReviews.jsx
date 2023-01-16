@@ -9,6 +9,7 @@ import Loading from "../Loading/Loading";
 import Swal from "sweetalert2";
 import RatingsStar from "../common/RatingsStar/RatingsStar";
 import GiveRatings from "../common/GiveRatings/GiveRatings";
+import ScrollToTop from "../common/ScrollToTop/ScrollToTop";
 
 const MyReviews = () => {
   useTitleChange("My Reviews");
@@ -105,6 +106,7 @@ const MyReviews = () => {
 
   return (
     <div className="container mx-auto mt-10 mb-20">
+      <ScrollToTop />
       {/* Reviews Table */}
       {/* Check if theres any reviews available */}
       {isLoading ? (

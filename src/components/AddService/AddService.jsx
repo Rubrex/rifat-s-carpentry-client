@@ -2,6 +2,7 @@ import { Button, Label, TextInput } from "flowbite-react";
 import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import useTitleChange from "../../hooks/useTitleChange";
+import ScrollToTop from "../common/ScrollToTop/ScrollToTop";
 
 const AddService = () => {
   useTitleChange("Add Service");
@@ -53,6 +54,7 @@ const AddService = () => {
 
   return (
     <div className="mt-10 mb-20">
+      <ScrollToTop />
       <form
         onSubmit={handleAddService}
         className="flex flex-col gap-4 max-w-[500px] p-14 border-slate-300 border mx-auto rounded-md"

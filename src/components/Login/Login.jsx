@@ -17,7 +17,7 @@ const Login = () => {
   const from = location.state?.from?.pathname || "/";
 
   // Access Context
-  const { logIn } = useContext(AuthContext);
+  const { logIn, user } = useContext(AuthContext);
   // Event Handlers
   const handleLogin = (event) => {
     event.preventDefault();
@@ -39,15 +39,20 @@ const Login = () => {
             body: JSON.stringify(currentUser),
           })
             .then((res) => res.json())
-            .then((data) =>
-              localStorage.setItem("carpentry_token", data.token)
-            );
-          toast.success("Logged In Successfully");
-          navigate(from, { replace: true });
+            .then((data) => {
+              localStorage.setItem("carpentry_token", data.token);
+              toast.success("Logged In Successfully");
+              navigate(from, { replace: true });
+            });
         }
       })
       .catch((err) => console.log(err));
   };
+
+  // If already logged in then take goto homepage
+  if (user?.email) {
+    navigate(from, { replace: true });
+  }
 
   return (
     <div className="container mx-auto my-10 mb-24">
