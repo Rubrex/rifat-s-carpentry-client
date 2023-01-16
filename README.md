@@ -1,6 +1,8 @@
-## Rifat's Carpentry
+### Rifat's Carpentry
 
-## Live Link: https://rifatcarpenter.web.app/
+### Live
+
+- https://rifatcarpenter.web.app/
 
 ## Features and Functionalities:
 
