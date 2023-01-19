@@ -24,7 +24,7 @@ const Header = () => {
       <div className="container mx-auto ">
         <Navbar fluid={true} rounded={true}>
           <Link to="/" className="flex items-center">
-            <img src={logo} className="mr-3 h-14 md:h-20" alt="Flowbite Logo" />
+            <img src={logo} className="mr-3 h-14 " alt="Flowbite Logo" />
           </Link>
           <div className="flex md:order-2">
             {/* className="bg-red border border-orange-500 text-orange-500 hover:bg-orange-100 " */}
@@ -64,12 +64,7 @@ const Header = () => {
             >
               Services
             </NavLink>
-            <NavLink
-              className="navItem hover:text-woodDark text-woodLight  md:text-slate-800 mb-2 md:mb-0 py-1 px-4"
-              to="/blogs"
-            >
-              Blogs
-            </NavLink>
+
             {user?.email && (
               <>
                 <NavLink
@@ -86,6 +81,12 @@ const Header = () => {
                 </NavLink>
               </>
             )}
+            <NavLink
+              className="navItem hover:text-woodDark text-woodLight  md:text-slate-800 mb-2 md:mb-0 py-1 px-4"
+              to="/blogs"
+            >
+              Blogs
+            </NavLink>
           </Navbar.Collapse>
         </Navbar>
       </div>

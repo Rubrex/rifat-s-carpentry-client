@@ -22,7 +22,7 @@ const BannerCarousel = () => {
 
   return (
     <section className="h-56 sm:h-64 md:h-[600px] 2xl:h-[600px] w-full">
-      <Carousel>
+      <Carousel className="rounded-none">
         {bannerImages.map((bannerImg, index) => (
           <div key={index} className="relative gradientToRight ">
             <img
@@ -32,9 +32,9 @@ const BannerCarousel = () => {
               className="relative gradientToRight object-cover"
             />
             <div className="absolute top-9 md:top-1/3 left-5 md:left-24 text-white z-10">
-              <div className="text-xl lg:text-5xl font-bold ">
+              <div className="text-lg md:text-xl lg:text-5xl font-bold ">
                 <h1>Renovate you housings</h1>
-                <h1 className="my-5">Modify furnitures</h1>
+                <h1 className="md:my-5">Modify furnitures</h1>
                 <h1>Stay Modern</h1>
               </div>
               <p className="mt-8 font-medium hidden md:block">
