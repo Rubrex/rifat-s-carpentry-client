@@ -60,6 +60,12 @@ const Header = () => {
           <Navbar.Collapse className="bg-slate-200 md:bg-white p-5 md:p-0 ">
             <NavLink
               className="navItem hover:text-woodDark text-woodLight  md:text-slate-800 mb-2 md:mb-0 py-1 px-4"
+              to="/"
+            >
+              Home
+            </NavLink>
+            <NavLink
+              className="navItem hover:text-woodDark text-woodLight  md:text-slate-800 mb-2 md:mb-0 py-1 px-4"
               to="/services"
             >
               Services
